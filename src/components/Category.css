@@ -1,0 +1,88 @@
+.category-component {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 155px;
+  list-style: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.category-component:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.category-component.selected {
+  border: 3px solid #5a83cb;
+  box-shadow: 0 0 20px rgba(37, 117, 252, 0.4);
+}
+
+.category-component button {
+  border: none;
+  padding: 0;
+  text-align: center;
+  cursor: pointer;
+  background: transparent;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.category-component img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.category-component:hover img {
+  transform: scale(1.05);
+}
+
+.category-component button p {
+  margin: 0;
+  padding: 15px 10px;
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  font-weight: 600;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.category-name {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+/* Responsive styles for category */
+@media (max-width: 768px) {
+  .category-component {
+    max-width: 155px;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-component {
+    max-width: 160px;
+  }
+  
+  .category-component img {
+    height: 155px;
+  }
+  
+  .category-name {
+    font-size: 1.3em;
+  }
+}

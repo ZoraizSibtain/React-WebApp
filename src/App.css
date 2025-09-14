@@ -1,0 +1,116 @@
+body {
+  background: linear-gradient(135deg, #520e9b 0%, #2575fc 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  color: #2c3e50;
+}
+
+.app-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 18px;
+  color: #2575fc;
+}
+
+.error-banner {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 8px;
+  text-align: center;
+  border-left: 4px solid #c62828;
+}
+
+/* Global responsive adjustments */
+@media (max-width: 768px) {
+  .loading {
+    font-size: 16px;
+  }
+  
+  .error-banner {
+    margin: 8px;
+    font-size: 14px;
+  }
+}
+
+.app-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.categories-section {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.categories-section h2 {
+  color: #2575fc;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.category-list {
+  padding: 0;
+  gap: 25px;
+  margin: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.Toastify__progress-bar--success {
+  background: #2575fc !important;
+}
+
+.Toastify__toast-icon svg {
+  fill: #2575fc !important;
+}
+
+.Toastify__toast--success .Toastify__toast-icon path {
+  fill: #2575fc !important;
+}
+
+/* Responsive layout */
+@media (max-width: 968px) {
+  .app-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .categories-section {
+    order: 2;
+  }
+  
+  .products-section {
+    order: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-content {
+    padding: 10px;
+  }
+  
+  .category-list {
+    gap: 20px;
+  }
+}
