@@ -1,11 +1,13 @@
 .product-list-container {
-  padding: 0px;
+  padding: 20px;
+  background: white;
+  border-radius: 18px;
 }
 
 .category-title {
   font-size: 24px;
   margin-bottom: 20px;
-  color: #ffffff;
+  color: #6a11cb;
   border-bottom: 2px solid #6a11cb;
   padding-bottom: 10px;
 }

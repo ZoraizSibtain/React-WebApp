@@ -1,70 +1,113 @@
-# Getting Started with Create React App
+# SmartPortables E-Commerce App
+A modern, responsive e-commerce application built with React for selling portable electronic devices.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Features
+- Product Catalog: Browse products organized by categories
+- Shopping Cart: Add/remove items, adjust quantities
+- User Authentication: Login functionality with session persistence
+- Responsive Design: Works on desktop and mobile devices
+- Order Checkout: Complete with tax calculation based on ZIP code
+- Toast Notifications: User feedback for actions
 
-## Available Scripts
+# Tech Stack
+- Frontend: React 18, React Router DOM
+- Styling: CSS3 with responsive design
+- HTTP Client: Axios for API calls
+- Notifications: React Toastify
+- State Management: React hooks (useState, useEffect)
 
-In the project directory, you can run:
+# Project Structure
+src/
+├── components/
+│   ├── Cart.js          # Shopping cart and checkout
+│   ├── Category.js      # Individual category items
+│   ├── Header.js        # Navigation header
+│   ├── Login.js         # Authentication form
+│   ├── ProductList.js   # Product display grid
+│   └── SelectedItem.js  # Selected category view
+├── App.js               # Main application component
+├── index.js             # Application entry point
+└── styles/              # CSS files for each component
 
-### `npm start`
+# Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js (v14 or higher)
+- npm or yarn
 
-### `npm test`
+# Installation
+1. Clone the repository:
+    git clone <repository-url>
+    cd smartportables
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Install dependencies:
+    npm install
+    npm install react react-dom react-scripts
+    npm install react-router-dom
+    npm install axios
+    npm install prop-types
+    npm install react-toastify
 
-### `npm run build`
+3. Start the development server:
+    npm run dev
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# API Integration
+The app is designed to work with a backend API with the following endpoints:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `GET /api/categories` - Fetch all categories
+- `GET /api/categories/:id` - Fetch specific category with products
+- `POST /api/auth/login` - User authentication
+- `GET /api/auth/status` - Check authentication status
 
-### `npm run eject`
+# Key Functionality
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Shopping Cart
+- Add products to cart with quantity management
+- Persistent cart state during session
+- Tax calculation based on ZIP code (first digit + 1%)
+- Order submission simulation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# User Authentication
+- Login form with email/password validation
+- Session persistence using localStorage
+- Protected routes for authenticated users
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Responsive Design
+- Mobile-friendly navigation with hamburger menu
+- Flexible grid layouts for products and categories
+- Adaptive styling for different screen sizes
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Available Scripts
+- `npm start` - Runs the app in development mode
+- `npm test` - Launches the test runner
+- `npm run build` - Builds the app for production
+- `npm run eject` - Ejects from Create React App (one-way operation)
 
-## Learn More
+# Browser Support
+This application supports all modern browsers including:
+- Chrome (latest)
+- Firefox (latest) - tested 09/13/2025
+- Safari (latest) - tested 09/12/2025
+- Edge (latest)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Future Enhancements
+- User registration functionality
+- Product search and filtering
+- Order history and tracking
+- Payment integration
+- Product reviews and ratings
+- Wishlist functionality
+- Admin dashboard for product management
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Contributing
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# License
+This project is licensed under the MIT License - see the LICENSE file for details.

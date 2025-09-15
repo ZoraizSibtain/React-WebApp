@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'; 
@@ -8,6 +8,7 @@ import Header from './components/Header';
 import Category from './components/Category';
 import ProductList from './components/ProductList';
 import Cart from './components/Cart';
+import Login from './components/Login';
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -15,6 +16,31 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [cart, setCart] = useState([]);
+  const [user, setUser] = useState(null);
+  const [authChecked, setAuthChecked] = useState(false);
+
+  // Check if user is already logged in (on app load)
+  useEffect(() => {
+    const checkAuthStatus = async () => {
+      try {
+        // API endpoint to check auth status
+        // const response = await axios.get('/api/auth/status');
+        // setUser(response.data.user);
+        
+        // For demo purposes, check localStorage
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+          setUser(JSON.parse(storedUser));
+        }
+      } catch (err) {
+        setUser(null);
+      } finally {
+        setAuthChecked(true);
+      }
+    };
+
+    checkAuthStatus();
+  }, []);
 
   // Fetch categories from backend
   useEffect(() => {
@@ -100,15 +126,44 @@ function App() {
     setCart(prevCart => prevCart.filter(item => item.id !== productId));
   };
 
+  const handleLogin = (userData) => {
+    setUser(userData);
+    // For demo purposes, store in localStorage
+    localStorage.setItem('user', JSON.stringify(userData));
+    toast.success(`Welcome back, ${userData.name}!`);
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+    // Don't clear cart on logout - keep items for guest users
+    localStorage.removeItem('user');
+    toast.info('You have been logged out');
+  };
+
   const getCategoryColor = (index) => {
     if ((index + 1) % 2 === 0) return '#2575fc';
     return '#6a11cb';
   };
 
+  // Show loading while checking authentication
+  if (!authChecked) {
+    return (
+      <div className="app-container">
+        <div className="loading">
+          <p>Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
   if (loading) {
     return (
       <div className="app-container">
-        <Header cartCount={cart.reduce((total, item) => total + item.quantity, 0)} />
+        <Header 
+          user={user} 
+          onLogout={handleLogout}
+          cartCount={cart.reduce((total, item) => total + item.quantity, 0)} 
+        />
         <div className="loading">
           <p>Loading categories...</p>
         </div>
@@ -118,21 +173,33 @@ function App() {
 
   return (
     <div className="app-container">
-      <Header cartCount={cart.reduce((total, item) => total + item.quantity, 0)} />
+      <Header 
+        user={user} 
+        onLogout={handleLogout}
+        cartCount={cart.reduce((total, item) => total + item.quantity, 0)} 
+      />
       
       {error && <div className="error-banner">{error}</div>}
 
       <Routes>
+        <Route 
+          path="/login" 
+          element={
+            user ? <Navigate to="/" replace /> : <Login onLogin={handleLogin} />
+          } 
+        />
         <Route path="/cart" element={
           <Cart 
             cart={cart} 
             updateQuantity={updateQuantity}
             removeFromCart={removeFromCart}
+            user={user}
+            onLoginRedirect={() => {/* add navigation logic here */}}
           />
         } />
         <Route path="/" element={
           <div className='app-content'>
-            {/* Categories List */}
+            
             <div className="categories-section">
               <ul className='category-list'>
                 {categories.map((category, index) => (
@@ -147,7 +214,6 @@ function App() {
               </ul>
             </div>
 
-            {/* Products Section */}
             <div className="products-section">
               {selectedCategory ? (
                 <ProductList

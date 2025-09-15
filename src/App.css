@@ -4,7 +4,7 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  color: #2c3e50;
+  color: #060606;
 }
 
 .app-container {
@@ -33,7 +33,7 @@ body {
   border-left: 4px solid #c62828;
 }
 
-/* Global responsive adjustments */
+
 @media (max-width: 768px) {
   .loading {
     font-size: 16px;
@@ -90,7 +90,7 @@ body {
   fill: #2575fc !important;
 }
 
-/* Responsive layout */
+
 @media (max-width: 968px) {
   .app-content {
     grid-template-columns: 1fr;
